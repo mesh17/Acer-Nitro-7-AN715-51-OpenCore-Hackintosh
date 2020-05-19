@@ -58,7 +58,7 @@
 > 1. Whether the native refresh rate adjustment is available depends on the model and production batch of the screen.
 > 1. HIDPI needs to be opened with additional tools.(needs more testing)
 > 1. SMBIOS selected to `MacBook Pro 16,1` and `MacBook Pro 15,3`, will have less sensor information than `MacBook Pro 15,1`.
-> 1. Non-GX531 requires separate custom USBPorts.kext to activate keyboard and fix sleep issues.
+> 1. Non- AN715-51 requires separate custom USBPorts.kext to activate keyboard and fix sleep issues.
  
  
  ## ## Issues & Solutions
