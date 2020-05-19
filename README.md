@@ -1,11 +1,24 @@
 # Acer Nitro 7-AN715-51-OpenCore-Hackintosh
- Goal of this repo is to run MacOs on ACER NITRO 7 
- (Can work on Acer nitro 5 2019 model)
+
+[![macOS](https://img.shields.io/badge/macOS-10.15.4-orange)](https://www.apple.com.cn/macos/catalina/)
+[![OpenCore](https://img.shields.io/badge/OpenCore-0.5.8-9cf)](https://github.com/acidanthera/OpenCorePkg)
+[![license](https://img.shields.io/badge/license-Anti%20996-blue.svg)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
+
+**macOS Version: 10.15.4 19E287**
+
+**OpenCore Version: [0.5.8 Offical](https://github.com/acidanthera/OpenCorePkg/releases/tag/0.5.8)**
+
+ Goal of this repo is to run MacOS on ACER NITRO 7 
 
  MacOS Catalina 10.15.4
  :-------------------------:
  ![alt text](screenshots/Screenshot.png)
  ![](screenshots/ss.png)
+ 
+ ## Updates
+- 2020-05-19:
+
+  Initial release .
 
  ## Guide
  
@@ -17,7 +30,7 @@
  
  | Part | Functional | Model | 
  | --- | --- | --- |
- | Machine | ✅ | Nitro 7 AN715-51 |
+ | Machine | ✅ | Acer Nitro 7 AN715-51 |
  | BIOS | ✅ | 1.29 Insyde-Unlocked |
  | CPU | ✅ | Intel(R) Core(TM) i5-9300H CPU @ 2.40GHz |
  | RAM | ✅ | 16GB DDR4 2666GHz SODIMM |
@@ -27,7 +40,7 @@
  | Bluetooth | ✅ | Broadcom 20702 Bluetooth 4.0 |
  | Ethernet | ✅ | Qualcomm/Atheros E2500 PCI-E Gigabit Ethernet |
  | Webcam | ✅ | Integrated 720P Webcam |
- | Audio | ✅ | ALC255 |
+ | Audio | ✅ | Realtek HDA ALC255 |
  | Microphone | 🚫 | Integrated Microphone |
  | Internal Screen | ✅ | LG LP156WFG-SPF3 15.6' 1920x1080 144Hz |
  | Trackpad | ✅ | I2C ELAN0504 |
@@ -46,7 +59,6 @@
 - [x] Battery Percentage
 - [x] Sleep & Wake
 - [x] Sensors
-- [x] HIDPI
 - [x] CPU turbo boost
 - [x] Trackpad
 - [x] Fn Keys
@@ -109,7 +121,6 @@
  * The new official I2C kexts are having some issues with wake/sleep .
  * For now use custom I2C kexts by @tiger511 .
  * Will get updated once the issues are fixed . 
- * If the trackpad doesn't after fresh MacOS install .
  
  ### Wifi & Bluetooth
  * In order to get Bluetooth and Wifi working, a wireless card replacement is needed.
@@ -118,12 +129,13 @@
  
  ### GPU
  ##### iGPU
+ * Remove `enable-dpcd-max-link-rate-fix` and `enable-dpcd-max-link-rate-fix` from config.plist-DeviceProperties if you've a normal 60hz display .
  * UHD 630 is supported from 2.X and above.
  * Some times UHD 630 glichs on the internal screen , maybe because of my 144hz display.
  * HDMI Port :
     * Long story short, it won't work. Why? Because all display output is hard wired to the NVIDIA GPU. You can confirm this by going into NVIDIA controler panel in Windows and see PhysX, and you can see all display output is wired to the NVIDIA card, while the eDP in screen display is wired to the iGPU. Therefore, since NVIDIA card won't work, also Optimus won't work, the HDMI port or USB-C display output just won't work because the display output is not wired to the iGPU. Not to mention you disabled dGPU in `config.plist/-wegnoegpu`or custom `SSDT-DDGPU`.	
  ##### dGPU
- * NVIDIA GTX1660ti is not supported and is disabled with `-wegnoegpu`.
+ * NVIDIA GTX1660ti is not supported and is disabled with SSDT-DDGPU.
  * [Apple and Nvidia Are Over: NVIDIA drops CUDA support for macOS.](https://gizmodo.com/apple-and-nvidia-are-over-1840015246)
  * Currently, there is nothing we can do. Let's hope Apple and NVIDIA work together again. 
  
