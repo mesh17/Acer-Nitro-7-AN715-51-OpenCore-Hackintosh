@@ -23,7 +23,7 @@
  | RAM | ✅ | 16GB DDR4 2666GHz SODIMM |
  | SSD | ✅ | 256GB Kingston NVMe(MacOS) + 1TB Crucial P1 NVMe(Windows 10) + 2TB Seagate HDD |
  | iGPU | ✅ | Intel UHD Graphics 630 1536 MB |
- | WLAN | ✅ | Broadcom BCM94352Z NGFF 802.11AC BT 4.0 Card |
+ | WLAN | ✅ | DW1560/Broadcom BCM94352Z NGFF 802.11AC BT 4.0 Card |
  | Bluetooth | ✅ | Broadcom 20702 Bluetooth 4.0 |
  | Ethernet | ✅ | Qualcomm/Atheros E2500 PCI-E Gigabit Ethernet |
  | Webcam | ✅ | Integrated 720P Webcam |
@@ -34,13 +34,31 @@
  | Keyboard | ✅ | - |
  | dGPU | 🚫 | NVIDIA GTX 1660ti 6GB GDDR6 |
  
- ## Status
- * Battery Status	| ✅
- * Brightness With keys(Fn+up/down) | ✅
- * Sleep/Hibernate | ✅
- * USB Ports | ✅
- * FaceTime/iMessages | Not tested
- * Rest everything is stable
+## Perfectly Working Features
+
+- [x] Native Hardware NVRAM
+- [x] Intel UHD630
+- [x] Screen Brightness Control
+- [x] Screen Brightness Memoriztion After Reboot
+- [x] Native Screen Refresh Rate Settings
+- [x] USB 3.1 Gen 1
+- [x] Web Camera
+- [x] Battery Percentage
+- [x] Sleep & Wake
+- [x] Sensors
+- [x] HIDPI
+- [x] CPU turbo boost
+- [x] Trackpad
+- [x] Fn Keys
+- [x] Siri
+- [x] USB Sidecar
+- [x] ...
+
+> 1. The above functions are only tested and passed in AN715-51.
+> 1. Whether the native refresh rate adjustment is available depends on the model and production batch of the screen.
+> 1. HIDPI needs to be opened with additional tools.(needs more testing)
+> 1. SMBIOS selected to `MacBook Pro 16,1` and `MacBook Pro 15,3`, will have less sensor information than `MacBook Pro 15,1`.
+> 1. Non-GX531 requires separate custom USBPorts.kext to activate keyboard and fix sleep issues.
  
  
  ## ## Issues & Solutions
@@ -48,8 +66,42 @@
  * [Hackintool: The Swiss army knife of vanilla Hackintoshing.](https://github.com/headkaze/Hackintool)
  * [How to download a full ‘Install macOS’ app with software update in TERMINAL](https://scriptingosx.com/2019/10/download-a-full-install-macos-app-with-softwareupdate-in-catalina/)
  
+ ## Generate your own SMbios
+
+   Platforminfo
+
+   For setting up the SMBIOS info, we'll use CorpNewt's GenSMBIOS and ProperTree application. https://github.com/corpnewt/GenSMBIOS https://github.com/corpnewt/ProperTree
+
+   Because of the Coffee Lake Plus(9th Gen), we'll choose the MacBookPro16,1 SMBIOS:
+
+   Run GenSMBIOS, pick option 1 for downloading MacSerial and Option 3 for selecting out SMBIOS. This will give us an output similar to the following:
+
+   Type: MacBookPro16,1
+
+   Serial: C02WXAY2HV2N
+
+   Board Serial: C02826303CDHRPC8C
+
+   SmUUID: 88AA1336-8DF9-477A-A39F-03D016ED0809
+
+   The order is Product | Serial | Board Serial (MLB)
+
+   The Type part gets copied to Generic -> SystemProductName.
+
+   The Serial part gets copied to Generic -> SystemSerialNumber.
+
+   The Board Serial part gets copied to Generic -> MLB.
+
+   The SmUUID part gets copied toto Generic -> SystemUUID.
+
+   We set Generic -> ROM to either an Apple ROM (dumped from a real Mac), your NIC MAC address, or any random MAC address (could be just 6 random bytes, for this guide we'll use 11223300 0000. After install follow the Fixing iServices page on how to find your real MAC Address)
+
+   Reminder that you want either an invalid serial or valid serial numbers but those not in use, you want to get a message back like: "Invalid Serial" or "Purchase Date not Validated"
+
+   Apple Check Coverage page https://checkcoverage.apple.com/cn/zh/
+ 
  ### Audio
- * KEXT required to enable Audio support: `AppleALC.kext`
+ * KEXT required to enable Audio support : `AppleALC.kext`
  * Make sure you inject audio `layout-id = 29 or 71` in OpenCore , using layout-id = 3 may get distorted audio. (Microphone doesn't work yet- Working on a custom layout-id)
  * Please share if you find out other working `layout-id`!
  
@@ -57,10 +109,11 @@
  * The new official I2C kexts are having some issues with wake/sleep .
  * For now use custom I2C kexts by @tiger511 .
  * Will get updated once the issues are fixed . 
+ * If the trackpad doesn't after fresh MacOS install .
  
  ### Wifi & Bluetooth
  * In order to get Bluetooth and Wifi working, a wireless card replacement is needed.
- * I replaced mine with BCM94352Z - got it from aliexpress .
+ * I replaced mine with BCM94352Z/DW1560 - got it from aliexpress .
  * For now, the best card to use is BCM94360CS2 using a NGFF adapter which you can buy on eBay under $10. It has the highest performance among all other hackintosh-able wireless cards. It is natively supported in OpenCore (v2.X and above).
  
  ### GPU
