@@ -141,6 +141,7 @@
  
  ### Power Management
  * On idle laptop uses 0.50w to 0.60w - stable for me.
+ * Use [CPUFriendFriend](https://github.com/corpnewt/CPUFriendFriend) to optimize your power management configuration ( don't use mine as they are optimized for i5-9300h)
  * using custom SSDT-DDGPU fixes power sapping issues .
  
  Intel Power Gadget
@@ -155,6 +156,7 @@
 - [daliansky](https://github.com/daliansky) for providing the awesome hotpatch guide [OC-little](https://github.com/daliansky/OC-little/) and the always up-to-date hackintosh solutions [XiaoMi-Pro-Hackintosh](https://github.com/daliansky/XiaoMi-Pro-Hackintosh) [黑果小兵的部落阁](https://blog.daliansky.net/)
 - [RehabMan](https://github.com/RehabMan) for providing numbers of [hotpatches](https://github.com/RehabMan/OS-X-Clover-Laptop-Config/tree/master/hotpatch) and hotpatch guides
 - [tiger511](https://github.com/tiger511) for custom I2C kexts
+- [corpnewt](https://github.com/corpnewt/CPUFriendFriend) for CPUFriendFriend
 - And all other authors that mentioned or not mentioned in this repo
  
  ## License
