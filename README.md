@@ -141,7 +141,14 @@
  
  ### Power Management
  * On idle laptop uses 0.50w to 0.60w - stable for me.
- * Use [CPUFriendFriend](https://github.com/corpnewt/CPUFriendFriend) to optimize your power management configuration ( don't use mine as they are optimized for i5-9300h)
+   [CPUFriendFriend](https://github.com/corpnewt/CPUFriendFriend) In order for macOS to effectively manage the power profile of the i5-9300H processor in the Nitro model used here, it is necessary to include a powermanagement profile for X86PlatformPlugin.
+ 
+   A pre-built `CPUFriend.kext` and `CPUFriendDataProvider.kext` is included in the `kext` folder for the i5-9300H.
+
+   Instructions on how to build a power mangaement profile for any other CPU types can be found here:
+
+   https://github.com/PMheart/CPUFriend/blob/master/Instructions.md
+   
  * using custom SSDT-DDGPU fixes power sapping issues .
  
  Intel Power Gadget
