@@ -1,16 +1,16 @@
 # Acer Nitro 7-AN715-51-OpenCore-Hackintosh
 
-[![macOS](https://img.shields.io/badge/macOS-10.15.4-orange)](https://www.apple.com.cn/macos/catalina/)
+[![macOS](https://img.shields.io/badge/macOS-10.15.5-orange)](https://www.apple.com.cn/macos/catalina/)
 [![OpenCore](https://img.shields.io/badge/OpenCore-0.5.8-9cf)](https://github.com/acidanthera/OpenCorePkg)
 [![license](https://img.shields.io/badge/license-Anti%20996-blue.svg)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
 
-**macOS Version: 10.15.4 19E287**
+**macOS Version: 10.15.5 19F96**
 
 **OpenCore Version: [0.5.8 Offical](https://github.com/acidanthera/OpenCorePkg/releases/tag/0.5.8)**
 
- Goal of this repo is to run MacOS on ACER NITRO 7 
+MacOS on ACER NITRO 7 
 
- MacOS Catalina 10.15.4
+ MacOS Catalina 10.15.5
  :-------------------------:
  ![alt text](screenshots/Screenshot.png)
  ![](screenshots/ss.png)
@@ -113,14 +113,14 @@
 
    Apple Check Coverage page https://checkcoverage.apple.com/cn/zh/
    
-*** Monitor
-- [[https://software.intel.com/en-us/articles/intel-power-gadget][Intel® Power Gadget]]
-- [[https://download.developer.apple.com/Developer_Tools/Additional_Tools_for_Xcode_11/Additional_Tools_for_Xcode_11.dmg][IO Registry Explorer]]
-- [[https://bjango.com/mac/istatmenus/][iStat Menus]]
-- [[https://github.com/kozlek/HWSensors][HWSensors]]
+### Monitor
+* [[https://software.intel.com/en-us/articles/intel-power-gadget][Intel® Power Gadget]]
+* [[https://download.developer.apple.com/Developer_Tools/Additional_Tools_for_Xcode_11/Additional_Tools_for_Xcode_11.dmg][IO Registry Explorer]]
+* [[https://bjango.com/mac/istatmenus/][iStat Menus]]
+* [[https://github.com/kozlek/HWSensors][HWSensors]]
 
-*** NTFS Writer
-- [[http://enjoygineering.com/mounty/][Mounty]]
+### NTFS Writer
+* [[http://enjoygineering.com/mounty/][Mounty]]
  
  ### Audio
  * KEXT required to enable Audio support : `AppleALC.kext`
@@ -165,8 +165,8 @@
  :-------------------------:
  ![alt text](screenshots/IPG.png)
  
- *** Time Sync
- Since macOS take BIOS time as UTC time, and Windows take it as local time, we need to make Windows take BIOS time as UTC time.
+ ### Time Sync
+ * Since macOS take BIOS time as UTC time, and Windows take it as local time, we need to make Windows take BIOS time as UTC time.
  #+BEGIN_SRC ps
    sudo Reg add HKLM\SYSTEM\CurrentControlSet\Control\TimeZoneInformation /v RealTimeIsUniversal /t REG_DWORD /d 1
  #+END_SRC
