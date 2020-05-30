@@ -25,6 +25,7 @@
  * Bios Unlock [GUIDE](https://www.win-raid.com/t6175f54-Request-Unlocking-the-advanced-and-overclocking-menu-ACER-NITRO-AN.html)
  * Go to [GUIDE](https://dortania.github.io/vanilla-laptop-guide/)(**Official Guide**)
  * [OC-Little](https://github.com/daliansky/OC-little) - (**By daliansky**)
+ (https://oc.skk.moe/2-configuration.html)
 
  ## ## System Information 💻
  
@@ -111,6 +112,15 @@
    Reminder that you want either an invalid serial or valid serial numbers but those not in use, you want to get a message back like: "Invalid Serial" or "Purchase Date not Validated"
 
    Apple Check Coverage page https://checkcoverage.apple.com/cn/zh/
+   
+*** Monitor
+- [[https://software.intel.com/en-us/articles/intel-power-gadget][Intel® Power Gadget]]
+- [[https://download.developer.apple.com/Developer_Tools/Additional_Tools_for_Xcode_11/Additional_Tools_for_Xcode_11.dmg][IO Registry Explorer]]
+- [[https://bjango.com/mac/istatmenus/][iStat Menus]]
+- [[https://github.com/kozlek/HWSensors][HWSensors]]
+
+*** NTFS Writer
+- [[http://enjoygineering.com/mounty/][Mounty]]
  
  ### Audio
  * KEXT required to enable Audio support : `AppleALC.kext`
@@ -154,6 +164,12 @@
  Intel Power Gadget
  :-------------------------:
  ![alt text](screenshots/IPG.png)
+ 
+ *** Time Sync
+ Since macOS take BIOS time as UTC time, and Windows take it as local time, we need to make Windows take BIOS time as UTC time.
+ #+BEGIN_SRC ps
+   sudo Reg add HKLM\SYSTEM\CurrentControlSet\Control\TimeZoneInformation /v RealTimeIsUniversal /t REG_DWORD /d 1
+ #+END_SRC
  
 ## Credits
 
