@@ -17,15 +17,15 @@ MacOS on ACER NITRO 7
  
  ## Updates
 - 2020-05-30:
-  -Update to 10.15.5.
-  -Update SSDT's from official guide.
-  -Disable framebuffer 1&2 (fixes screen glitch).
-  -Fix high power usage after sleep.
-  -Update USB power values.
+  * Update to 10.15.5.
+  * Update SSDT's from official guide.
+  * Disable framebuffer 1&2 (fixes screen glitch).
+  * Fix high power usage after sleep.
+  * Update USB power values.
  
 - 2020-05-19:
 
-  -Initial release .
+  * Initial release .
 
  ## Guide
  
