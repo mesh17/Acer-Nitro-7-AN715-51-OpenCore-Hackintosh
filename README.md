@@ -139,7 +139,15 @@ MacOS on ACER NITRO 7
  
  ### GPU
  ##### iGPU
- * Remove `enable-dpcd-max-link-rate-fix` and `enable-dpcd-max-link-rate-fix` from config.plist-DeviceProperties if you've a normal 60hz display .
+ This repository contains config for FHD display , change the values below If you're using 4k display. The only differences between 4K and FHD are:
+
+ - Change ```dpcd-max-link-rate``` in ```Root/DeviceProperties/Add/PciRoot(0x0)/Pci(0x2,0x0)``` from ```0A000000``` to ```14000000```
+ - Change ```UIScale``` in ```Root/NVRAM/Add/4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14``` from ```01``` to ```02```
+
+ Also, I strongly suggest enabling subpixel antialiasing for the FHD screen.
+
+ ```defaults write -g CGFontRenderingFontSmoothingDisabled -bool NO```
+ 
  * UHD 630 is supported from 2.X and above.
  * Some times UHD 630 glichs on the internal screen , maybe because of my 144hz display.
  * HDMI Port :
@@ -164,13 +172,7 @@ MacOS on ACER NITRO 7
  Intel Power Gadget
  :-------------------------:
  ![alt text](screenshots/IPG.png)
- 
- ### Time Sync
- Since macOS take BIOS time as UTC time, and Windows take it as local time, we need to make Windows take BIOS time as UTC time.
- #+BEGIN_SRC ps
-   sudo Reg add HKLM\SYSTEM\CurrentControlSet\Control\TimeZoneInformation /v RealTimeIsUniversal /t REG_DWORD /d 1
- #+END_SRC
- 
+
 ## Credits
 
 - [acidanthera](https://github.com/acidanthera) for providing almost all kexts and drivers
