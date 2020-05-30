@@ -4,7 +4,7 @@
 [![OpenCore](https://img.shields.io/badge/OpenCore-0.5.8-9cf)](https://github.com/acidanthera/OpenCorePkg)
 [![license](https://img.shields.io/badge/license-Anti%20996-blue.svg)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
 
-**macOS Version: 10.15.5 19F96**
+**macOS Version: 10.15.5 (19F96)**
 
 **OpenCore Version: [0.5.8 Offical](https://github.com/acidanthera/OpenCorePkg/releases/tag/0.5.8)**
 
@@ -16,9 +16,16 @@ MacOS on ACER NITRO 7
  ![](screenshots/ss.png)
  
  ## Updates
+- 2020-05-30:
+  -Update to 10.15.5.
+  -Update SSDT's from official guide.
+  -Disable framebuffer 1&2 (fixes screen glitch).
+  -Fix high power usage after sleep.
+  -Update USB power values.
+ 
 - 2020-05-19:
 
-  Initial release .
+  -Initial release .
 
  ## Guide
  
@@ -149,7 +156,6 @@ MacOS on ACER NITRO 7
  ```defaults write -g CGFontRenderingFontSmoothingDisabled -bool NO```
  
  * UHD 630 is supported from 2.X and above.
- * Some times UHD 630 glichs on the internal screen , maybe because of my 144hz display.
  * HDMI Port :
     * Long story short, it won't work. Why? Because all display output is hard wired to the NVIDIA GPU. You can confirm this by going into NVIDIA controler panel in Windows and see PhysX, and you can see all display output is wired to the NVIDIA card, while the eDP in screen display is wired to the iGPU. Therefore, since NVIDIA card won't work, also Optimus won't work, the HDMI port or USB-C display output just won't work because the display output is not wired to the iGPU. Not to mention you disabled dGPU in `config.plist/-wegnoegpu`or custom `SSDT-DDGPU`.	
  ##### dGPU
