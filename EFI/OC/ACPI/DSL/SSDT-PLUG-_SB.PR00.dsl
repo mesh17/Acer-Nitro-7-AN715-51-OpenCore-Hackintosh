@@ -1,35 +1,50 @@
-DefinitionBlock ("", "SSDT", 2, "ACDT", "CpuPlug", 0x00003000)
+/*
+ * XCPM power management compatibility table.
+ */
+DefinitionBlock ("", "SSDT", 2, "CpuRef", "CpuPlug", 0x00003000)
 {
-    External (_SB_.PR00, ProcessorObj)    // (from opcode)
+    External (_SB_.PR00, ProcessorObj)   // Rename this
 
-    Method (PMPM, 4, NotSerialized)
+    Scope (_SB.PR00)  // Rename this
     {
-        If (LEqual (Arg2, Zero))
+        Method (DTGP, 5, NotSerialized)
         {
-            Return (Buffer (One)
+            If (LEqual (Arg0, ToUUID ("a0b5b7c6-1318-441c-b0c9-fe695eaf949b")))
             {
-                 0x03                                           
-            })
-        }
-
-        Return (Package (0x02)
-        {
-            "plugin-type", 
-            One
-        })
-    }
-
-    If (CondRefOf (\_SB.PR00))
-    {
-        If (LEqual (ObjectType (\_SB.PR00), 0x0C))
-        {
-            Scope (\_SB.PR00)
-            {
-                Method (_DSM, 4, NotSerialized)  // _DSM: Device-Specific Method
+                If (LEqual (Arg1, One))
                 {
-                    Return (PMPM (Arg0, Arg1, Arg2, Arg3))
+                    If (LEqual (Arg2, Zero))
+                    {
+                        Store (Buffer (One)
+                            {
+                                 0x03                                           
+                            }, Arg4)
+                        Return (One)
+                    }
+
+                    If (LEqual (Arg2, One))
+                    {
+                        Return (One)
+                    }
                 }
             }
+
+            Store (Buffer (One)
+                {
+                     0x00                                           
+                }, Arg4)
+            Return (Zero)
+        }
+
+        Method (_DSM, 4, NotSerialized)  // _DSM: Device-Specific Method
+        {
+            Store (Package (0x02)
+                {
+                    "plugin-type", 
+                    One
+                }, Local0)
+            DTGP (Arg0, Arg1, Arg2, Arg3, RefOf (Local0))
+            Return (Local0)
         }
     }
 }

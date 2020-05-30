@@ -1,13 +1,13 @@
-DefinitionBlock ("", "SSDT", 2, "ACDT", "DMAC", 0x00000000)
+//Add DMAC
+DefinitionBlock ("", "SSDT", 2, "ACDT", "DMAC", 0)
 {
-    External (_SB_.PCI0.LPCB, DeviceObj)    // (from opcode)
-
+    External(_SB.PCI0.LPCB, DeviceObj)
     Scope (_SB.PCI0.LPCB)
     {
         Device (DMAC)
         {
-            Name (_HID, EisaId ("PNP0200"))  // _HID: Hardware ID
-            Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
+            Name (_HID, EisaId ("PNP0200"))
+            Name (_CRS, ResourceTemplate ()
             {
                 IO (Decode16,
                     0x0000,             // Range Minimum
@@ -36,7 +36,7 @@ DefinitionBlock ("", "SSDT", 2, "ACDT", "DMAC", 0x00000000)
                 DMA (Compatibility, NotBusMaster, Transfer8_16, )
                     {4}
             })
-            Method (_STA, 0, NotSerialized)  // _STA: Status
+            Method (_STA, 0, NotSerialized)
             {
                 If (_OSI ("Darwin"))
                 {
@@ -50,4 +50,3 @@ DefinitionBlock ("", "SSDT", 2, "ACDT", "DMAC", 0x00000000)
         }
     }
 }
-

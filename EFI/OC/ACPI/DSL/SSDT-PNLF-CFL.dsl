@@ -1,16 +1,15 @@
 //
-DefinitionBlock("", "SSDT", 2, "ACDT", "PNLF", 0)
+DefinitionBlock ("", "SSDT", 2, "ACDT", "PNLF", 0x00000000)
 {
-    Scope(_SB)
+    Scope (_SB)
     {
-        Device(PNLF)
+        Device (PNLF)
         {
-            Name(_ADR, Zero)
-            Name(_HID, EisaId ("APP0002"))
-            Name(_CID, "backlight")
-            //CoffeeLake+
-            Name(_UID, 19)
-            Method (_STA, 0, NotSerialized)
+            Name (_ADR, Zero)  // _ADR: Address
+            Name (_HID, EisaId ("APP0002"))  // _HID: Hardware ID
+            Name (_CID, "backlight")  // _CID: Compatible ID
+            Name (_UID, 0x13)  // _UID: Unique ID
+            Method (_STA, 0, NotSerialized)  // _STA: Status
             {
                 If (_OSI ("Darwin"))
                 {
@@ -21,7 +20,7 @@ DefinitionBlock("", "SSDT", 2, "ACDT", "PNLF", 0)
                     Return (Zero)
                 }
             }
-        }        
+        }
     }
 }
-//EOF
+

@@ -1,3 +1,4 @@
+//Add PPMC
 DefinitionBlock ("", "SSDT", 2, "ACDT", "PPMC", 0x00000000)
 {
     External (_SB_.PCI0, DeviceObj)    // (from opcode)

@@ -1,9 +1,10 @@
-DefinitionBlock ("", "SSDT", 2, "ACDT", "MEM2", 0x00000000)
+//Add MEM2
+DefinitionBlock ("", "SSDT", 2, "ACDT", "MEM2", 0)
 {
     Device (MEM2)
     {
-        Name (_HID, EisaId ("PNP0C01"))  // _HID: Hardware ID
-        Name (_UID, 0x02)  // _UID: Unique ID
+        Name (_HID, EisaId ("PNP0C01"))
+        Name (_UID, 0x02)
         Name (CRS, ResourceTemplate ()
         {
             Memory32Fixed (ReadWrite,
@@ -15,12 +16,12 @@ DefinitionBlock ("", "SSDT", 2, "ACDT", "MEM2", 0x00000000)
                 0x00200000,         // Address Length
                 )
         })
-        Method (_CRS, 0, NotSerialized)  // _CRS: Current Resource Settings
+        Method (_CRS, 0, NotSerialized)
         {
             Return (CRS)
         }
-
-        Method (_STA, 0, NotSerialized)  // _STA: Status
+        
+        Method (_STA, 0, NotSerialized)
         {
             If (_OSI ("Darwin"))
             {

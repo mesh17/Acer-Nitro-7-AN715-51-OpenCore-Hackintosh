@@ -1,10 +1,8 @@
-/*
- * SMBus compatibility table.
- */
+// Add SBUS & MCHC
 DefinitionBlock ("", "SSDT", 2, "ACDT", "MCHCSBUS", 0x00000000)
 {
-    External (_SB_.PCI0, DeviceObj)
-    External (_SB_.PCI0.SBUS.BUS0, DeviceObj)
+    External (_SB_.PCI0, DeviceObj)    // (from opcode)
+    External (_SB_.PCI0.SBUS.BUS0, DeviceObj)    // (from opcode)
 
     Scope (_SB.PCI0)
     {
@@ -24,11 +22,11 @@ DefinitionBlock ("", "SSDT", 2, "ACDT", "MCHCSBUS", 0x00000000)
             Name (_CID, "diagsvault")  // _CID: Compatible ID
             Method (_DSM, 4, NotSerialized)  // _DSM: Device-Specific Method
             {
-                If (!Arg2)
+                If (LNot (Arg2))
                 {
                     Return (Buffer (One)
                     {
-                         0x57                                             // W
+                         0x57                                           
                     })
                 }
 
@@ -43,30 +41,31 @@ DefinitionBlock ("", "SSDT", 2, "ACDT", "MCHCSBUS", 0x00000000)
 
     Method (DTGP, 5, NotSerialized)
     {
-        If ((Arg0 == ToUUID ("a0b5b7c6-1318-441c-b0c9-fe695eaf949b")))
+        If (LEqual (Arg0, ToUUID ("a0b5b7c6-1318-441c-b0c9-fe695eaf949b")))
         {
-            If ((Arg1 == One))
+            If (LEqual (Arg1, One))
             {
-                If ((Arg2 == Zero))
+                If (LEqual (Arg2, Zero))
                 {
-                    Arg4 = Buffer (One)
+                    Store (Buffer (One)
                         {
-                             0x03                                             // .
-                        }
+                             0x03                                           
+                        }, Arg4)
                     Return (One)
                 }
 
-                If ((Arg2 == One))
+                If (LEqual (Arg2, One))
                 {
                     Return (One)
                 }
             }
         }
 
-        Arg4 = Buffer (One)
+        Store (Buffer (One)
             {
-                 0x00                                             // .
-            }
+                 0x00                                           
+            }, Arg4)
         Return (Zero)
     }
 }
+

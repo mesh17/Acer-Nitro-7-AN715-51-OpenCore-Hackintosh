@@ -1,3 +1,4 @@
+//
 DefinitionBlock ("", "SSDT", 2, "hack", "_XOSI", 0x00000000)
 {
     Method (XOSI, 1, NotSerialized)
