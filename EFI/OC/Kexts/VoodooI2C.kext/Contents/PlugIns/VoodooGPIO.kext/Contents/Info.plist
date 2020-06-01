@@ -53,7 +53,7 @@
 			<key>IOProviderClass</key>
 			<string>IOService</string>
 			<key>ResponseLatencyMicroSecond</key>
-			<integer>1000</integer>
+			<integer>0</integer>
 		</dict>
 		<key>VoodooGPIOCannonLakeLP</key>
 		<dict>
