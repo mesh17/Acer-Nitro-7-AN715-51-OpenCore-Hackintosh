@@ -1,12 +1,12 @@
 # Acer Nitro 7-AN715-51-OpenCore-Hackintosh
 
 [![macOS](https://img.shields.io/badge/macOS-10.15.5-orange)](https://www.apple.com.cn/macos/catalina/)
-[![OpenCore](https://img.shields.io/badge/OpenCore-0.5.8-9cf)](https://github.com/acidanthera/OpenCorePkg)
+[![OpenCore](https://img.shields.io/badge/OpenCore-0.5.9-9cf)](https://github.com/acidanthera/OpenCorePkg)
 [![license](https://img.shields.io/badge/license-Anti%20996-blue.svg)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
 
 **macOS Version: 10.15.5 (19F96)**
 
-**OpenCore Version: [0.5.8 Offical](https://github.com/acidanthera/OpenCorePkg/releases/tag/0.5.8)**
+**OpenCore Version: [0.5.9 Offical](https://github.com/acidanthera/OpenCorePkg/releases/tag/0.5.9)**
 
 MacOS on ACER NITRO 7 
 
